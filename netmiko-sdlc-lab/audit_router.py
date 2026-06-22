@@ -7,7 +7,7 @@ import json
 import yaml
 
 from netmiko import ConnectHandler
-from netmiko.exceptions import NetmikoTimeoutException, NetmikoAuthenticationException
+from netmiko.ssh_exception import NetMikoTimeoutException, NetMikoAuthenticationException
 
 
 INVENTORY_FILE = "inventory.yml"
@@ -71,11 +71,11 @@ def collect_router_data(router, password):
 
         result["status"] = "success"
 
-    except NetmikoAuthenticationException as error:
+    except NetMikoAuthenticationException as error:
         result["status"] = "failed"
         result["error"] = f"Authentication failed: {error}"
 
-    except NetmikoTimeoutException as error:
+    except NetMikoTimeoutException as error:
         result["status"] = "failed"
         result["error"] = f"Connection timed out: {error}"
 
