@@ -1,0 +1,9 @@
+routers:
+  - name: csr1
+    device_type: cisco_xe
+    host: <CSR1000v-IP>
+    username: devasc
+    port: 22
+    commands:
+      - show version
+      - show ip interface brief
